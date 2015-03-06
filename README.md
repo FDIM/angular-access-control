@@ -1,4 +1,4 @@
-# angular-access-control
+# angular access control
 to be done soon
 
 ## the idea
