@@ -1,5 +1,5 @@
 # angular access control
-to be done soon
+Unducumented version is available for use. 
 
 ## the idea
 Make a standard service and a directive to control access to certain parts of the application based on resources you have access to. 
