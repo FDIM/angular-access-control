@@ -1,5 +1,15 @@
-# angular access control
-Unducumented version is available for use. 
+# angular access control (acl)
+Undocumented version is available for use. It does not include roles, as the list of resources is merged on server side.
+## usage
+When user logges in you have to initialize service with the identity (an object with resources that either grants access ot denies it).
+Example:
+
+    $rootScope.$on("auth.change", function (event, identity) {
+	  		  acl.init(identity);
+	  		  $rootScope.identity = identity;
+	  	  	// notify that acl resources have changed
+	    		$rootScope.$emit('acl.change', identity);
+    });
 
 ## the idea
 Make a standard service and a directive to control access to certain parts of the application based on resources you have access to. 
