@@ -2,14 +2,33 @@
 Undocumented version is available for use. It does not include roles, as the list of resources is merged on server side.
 ## usage
 When user logges in you have to initialize service with the identity (an object with resources that either grants access ot denies it).
-Example:
 
-    $rootScope.$on("auth.change", function (event, identity) {
-	  		  acl.init(identity);
-	  		  $rootScope.identity = identity;
-	  	  	// notify that acl resources have changed
-	    		$rootScope.$emit('acl.change', identity);
-    });
+JS:
+
+	app.run(function ($rootScope, acl, $state) {
+		$rootScope.identity = {
+			isGuest: false, // can be used with ng-if to toggle other content if user is logged in or not
+			id: 0,
+			name: 'Test',
+			resources:{
+				allowed:['home', 'user.**'],
+				denied:['user.profile.edit']
+			}
+		};
+		acl.init($rootScope.identity);
+		$rootScope.$emit('acl.change', identity);
+		$rootScope.$on('acl.stateChangeDenied', function (event, data) {
+			console.info([event.name, data]);
+			$state.go('home'); // data has all arguments that stateChangeStart gets
+		});
+	});
+
+HTML:
+
+    <* rr="home"></*>
+    <* rr="user.profile.edit"></*>
+
+Element will be removed from DOM when user doesn't have access to the resource and reinserted back when he gets it.
 
 ## the idea
 Make a standard service and a directive to control access to certain parts of the application based on resources you have access to. 
