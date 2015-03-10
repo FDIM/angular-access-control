@@ -1,10 +1,25 @@
 # angular access control (acl)
 Undocumented version is available for use. It does not include roles, as the list of resources is merged on server side.
 ## usage
-When user logges in you have to initialize service with the identity (an object with resources that either grants access ot denies it).
+When user logges in you have to initialize service with the identity (an object with resources that either grants access or denies it).
 
 JS:
 
+	app.config(function ($stateProvider) {
+		$stateProvider.state('home', {
+			url: '/home',
+			views: {
+				"main": {
+					controller: 'HomeController as model',
+					templateUrl: 'home/home.tpl.html'
+				}
+			},
+			data: {
+				pageTitle: 'Home',
+				resource: 'home' // if access to this resource is not granted, state change will cancelled and 'acl.stateChangeDenied' event emitted with all available arguments. Case when identity is retrieved via ajax is also handled, state change (that requires access to a resource) will be blocked untill acl service is initialized.
+			}
+		});
+	});
 	app.run(function ($rootScope, acl, $state) {
 		$rootScope.identity = {
 			isGuest: false, // can be used with ng-if to toggle other content if user is logged in or not
