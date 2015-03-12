@@ -114,7 +114,7 @@
 			if (allowed) {
 				// go through all denied rules and figure out if resource is accessible
 				for (i = 0; i < this.resources.denied.length; i++) {
-					allowed = this.testRule(this.resources.denied[i], resource);
+					allowed = !this.testRule(this.resources.denied[i], resource);
 					if (!allowed) {
 						break;
 					}
@@ -126,14 +126,27 @@
 	// directive used to adjust html based on acl resource.
 	module.directive('rr', function (acl, $rootScope) {
 		var list = {};
+
+		function validateAccess(resources) {
+			var allowed = false;
+			// check if any resource in the list is allowed
+			var parts = resources.split(',');
+			for (var i = 0; i < parts.length; i++) {
+				allowed = acl.isAllowed(parts[i]);
+				if (allowed) {
+					break;
+				}
+			}
+			return allowed;
+		}
 		$rootScope.$on("acl.change", function (event, identity) {
-			for (var resource in list) {
-				var allowed = acl.isAllowed(resource);
-				for (var i = 0; i < list[resource].length; i++) {
+			for (var resources in list) {
+				var allowed = validateAccess(resources);
+				for (var i = 0; i < list[resources].length; i++) {
 					if (allowed) {
-						list[resource][i].element.insertAfter(list[resource][i].placeholder);
+						list[resources][i].element.insertAfter(list[resources][i].placeholder);
 					} else {
-						list[resource][i].element.detach();
+						list[resources][i].element.detach();
 					}
 				}
 			}
@@ -152,7 +165,9 @@
 					element: element,
 					placeholder: comment
 				});
-
+				if (acl.initialized && validateAccess(attrs.rr)) {
+					element.insertAfter(comment);
+				}
 			}
 		};
 	});
