@@ -122,6 +122,16 @@ describe('acl', function () {
       $rootScope.$digest(); // process all directives
       expect(element.text()).toEqual("hello guest");
     });
+    it("should say hello guest for guestsIdentity and hello user later on", function () {
+      acl.init(guestIdentity);
+      var element = $compile(template)($rootScope);
+      $rootScope.$digest(); // process all directives
+      expect(element.text()).toEqual("hello guest");
+      // change acl
+      acl.init(userIdentity);
+      $rootScope.$digest(); // process all directives
+      expect(element.text()).toEqual("hello user");
+    });
     it("should not say loggedin and an admin for guestsIdentity", function () {
       acl.init(guestIdentity);
       var element = $compile(template2)($rootScope);
