@@ -1,0 +1,32 @@
+{
+  "name": "ngAcl",
+  "main": "dist/ng-acl.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/FDIM/ng-acl.git",
+  "authors": [
+    "FDIM <domas.trijonis@gmail.com>"
+  ],
+  "description": "desc",
+  "keywords": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    ".idea",
+    ".gitignore",
+    "node_modules",
+    "tests",
+    "LICENSE",
+    "bower_components",
+    "coverage",
+    "gulpfile.js",
+    "package.json",
+    "*.conf.js"
+  ],
+  "dependencies": {
+    "angular": ">=1.0.8"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.0.8",
+    "angular-ui-router": "~0.2.15"
+  }
+}

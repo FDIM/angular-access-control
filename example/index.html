@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+    <script src="../bower_components/angular/angular.js" type="text/javascript"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js" type="text/javascript"></script>
+    <script src="../dist/ngAcl.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div ng-controller="AppController">
+        <h1>Simple rr directive example</h1>
+        <p>Welcome message below will change based on current user resources</p>
+        <div>Hello
+            <span rr="!loggedin">guest</span>
+            <span rr="admin">super </span>
+            <span rr="loggedin">user</span>
+        </div>
+        <p rr="user.account|user.profile">You have access to account or profile</p>
+        <p rr="loggedin,admin">You are loggedin and an admin!</p>
+    </div>
+</body>
+
+</html>

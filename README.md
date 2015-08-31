@@ -1,4 +1,7 @@
-# angular access control (acl)
+# ng-acl (angular access control)
+[![Build Status](https://secure.travis-ci.org/FDIM/ng-acl.png?branch=master)](https://travis-ci.org/FDIM/ng-acl)
+[![Coverage Status](https://coveralls.io/repos/FDIM/ng-acl/badge.svg?branch=master&service=github)](https://coveralls.io/r/FDIM/ng-acl/?branch=master)
+
 Undocumented version is available for use. It does not include roles, as the list of resources is merged on server side.
 ## usage
 When user logges in you have to initialize service with the identity (an object with resources that either grants access or denies it).
