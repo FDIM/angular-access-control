@@ -24,7 +24,7 @@
         };
       }
       if (!this.identity.resources.allowed || !this.identity.resources.allowed) {
-        throw new Error("resources must be an object with allowed and denied properties");
+        throw new Error("resources must be an object with allowed and denied properties or unspecified at all");
       }
       $rootScope.$emit('acl.change', identity);
     };

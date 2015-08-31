@@ -40,6 +40,14 @@ describe('acl', function () {
     acl = _acl_;
   }));
 
+  it("should fail with identity without resources", function () {
+    expect(function () {
+      acl.init({
+        resources: {}
+      });
+    }).toThrow(new Error("resources must be an object with allowed and denied properties or unspecified at all"));
+
+  });
   var allowed = function (r) {
     it("should have access to " + r, function () {
       expect(acl.isAllowed(r)).toBe(true);
