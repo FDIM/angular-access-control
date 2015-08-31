@@ -6,7 +6,7 @@
   "authors": [
     "FDIM <domas.trijonis@gmail.com>"
   ],
-  "description": "Angular Access Control List module that enables granual control of ui elements based on current user's resources. A directive and a service exists for this purpose. Optional sub-module exists for angular ui router.",
+  "description": "Angular Access Control List module that enables granular control of ui elements based on current user 's resources. A directive and a service exists for this purpose. Optional sub-module exists for angular ui router.",
   "keywords": ["angular", "access", "control", "ng-acl"],
   "license": "MIT",
   "ignore": [
