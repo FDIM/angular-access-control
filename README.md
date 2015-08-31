@@ -1,6 +1,6 @@
 # ng-acl (angular access control)
 [![Build Status](https://secure.travis-ci.org/FDIM/ng-acl.png?branch=master)](https://travis-ci.org/FDIM/ng-acl)
-[![Coverage Status](https://coveralls.io/repos/FDIM/ng-acl/badge.svg?branch=master&service=github)](https://coveralls.io/r/FDIM/ng-acl/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/FDIM/ng-acl/badge.svg?branch=master&service=github)](https://coveralls.io/github/FDIM/ng-acl?branch=master)
 
 Angular Access Control List module that enables granular control of ui elements based on current user's resources. A directive and a service exists for this purpose. Optional sub-module exists for angular ui router to be used together with various states.
 
@@ -22,6 +22,7 @@ Rules look like this:
 When user logins in you have to initialize service with the identity that includes associated resources, see format below:
 
 JS:
+
 	app.run(function ($rootScope, acl, $state) {
 		$rootScope.identity = {
 			isGuest: false, // can be used with ng-if to toggle other content if user is logged in or not
@@ -47,4 +48,4 @@ HTML:
 Element will be detached from DOM when user doesn't have access to the resource and reinserted back when he gets it. It is perfectly fine to reinitialize acl service with new identity as this will trigger validation of each element that rr directive is bound to.
 
 ## installation
-TODO
+As simple as "bower install ng-acl"
