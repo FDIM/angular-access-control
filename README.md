@@ -22,6 +22,7 @@ Rules look like this:
 When user logins in you have to initialize service with the identity that includes associated resources, see format below:
 
 JS:
+
 	app.run(function ($rootScope, acl, $state) {
 		$rootScope.identity = {
 			isGuest: false, // can be used with ng-if to toggle other content if user is logged in or not
@@ -47,4 +48,4 @@ HTML:
 Element will be detached from DOM when user doesn't have access to the resource and reinserted back when he gets it. It is perfectly fine to reinitialize acl service with new identity as this will trigger validation of each element that rr directive is bound to.
 
 ## installation
-TODO
+As simple as "bower install ng-acl"
