@@ -1,13 +1,13 @@
 {
-  "name": "ngAcl",
+  "name": "ng-acl",
   "main": "dist/ng-acl.js",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/FDIM/ng-acl.git",
   "authors": [
     "FDIM <domas.trijonis@gmail.com>"
   ],
-  "description": "desc",
-  "keywords": [],
+  "description": "Angular Access Control List module that enables granual control of ui elements based on current user's resources. A directive and a service exists for this purpose. Optional sub-module exists for angular ui router.",
+  "keywords": ["angular", "access", "control", "ng-acl"],
   "license": "MIT",
   "ignore": [
     "**/.*",

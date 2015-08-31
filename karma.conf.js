@@ -1,8 +1,7 @@
 // Karma configuration
 // Generated on Wed Dec 24 2014 19:30:10 GMT-0200 (Horário brasileiro de verão)
 
-var _karma = function(config)
-{
+var _karma = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -36,8 +35,7 @@ var _karma = function(config)
       'src/**/*.js': 'coverage'
     },
 
-    coverageReporter:
-    {
+    coverageReporter: {
       type: 'lcov',
       dir: 'coverage'
     },
@@ -55,7 +53,6 @@ var _karma = function(config)
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,
-
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
