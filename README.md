@@ -1,6 +1,6 @@
 # ng-acl (angular access control)
 [![Build Status](https://secure.travis-ci.org/FDIM/ng-acl.png?branch=master)](https://travis-ci.org/FDIM/ng-acl)
-[![Coverage Status](https://coveralls.io/repos/FDIM/ng-acl/badge.svg?branch=master&service=github)](https://coveralls.io/r/FDIM/ng-acl/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/FDIM/ng-acl/badge.svg?branch=master&service=github)](https://coveralls.io/github/FDIM/ng-acl?branch=master)
 
 Angular Access Control List module that enables granular control of ui elements based on current user's resources. A directive and a service exists for this purpose. Optional sub-module exists for angular ui router to be used together with various states.
 
