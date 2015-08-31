@@ -1,5 +1,4 @@
 "use strict";
-
 /**
  * Tests sit right alongside the file they are testing, which is more intuitive
  * and portable than separating `src` and `test` directories. Additionally, the
@@ -7,6 +6,23 @@
  * automatically.
  */
 describe('acl', function () {
+  beforeEach(module("ngAcl.states"));
+  beforeEach(module(function ($stateProvider) {
+    $stateProvider.state('state1', {
+        url: "/state1",
+        template: "partials/state1.html"
+      })
+      .state('state2', {
+        url: "/state2",
+        data: {
+          resource: 'user.account'
+        },
+        template: "partials/state2.html"
+      }).state('error', {
+        url: '/error',
+        template: "partials/error.html"
+      });
+  }));
   beforeEach(module('ngAcl.services'));
   beforeEach(module('ngAcl.directives'));
   var acl,
@@ -179,6 +195,38 @@ describe('acl', function () {
       var element = $compile(template3)($rootScope);
       $rootScope.$digest(); // process all directives
       expect(element.text()).toEqual("profile or account");
+    });
+  });
+  describe("state change", function () {
+
+    var $state, $timeout;
+    beforeEach(inject(function (_$state_, _$timeout_) {
+      $state = _$state_;
+      $timeout = _$timeout_;
+      spyOn($state, "go").and.callThrough();
+      spyOn(acl, "isAllowed").and.callThrough();
+    }));
+    it("should not be prevented and acl service unused", function () {
+      $state.go("state1");
+      // 
+      expect(acl.isAllowed).not.toHaveBeenCalled();
+    });
+    it("should be prevented, acl service used and state change performed later on", function () {
+      // redirect to error state
+      $rootScope.$on('acl.stateChangeDenied', function () {
+        $state.go("error");
+      });
+      // before user is loggedin, state change is delayed
+      $state.go("state2");
+
+      // prep acl
+      acl.init(userIdentity);
+      // invoke delayed state change
+      $timeout.flush();
+      // and expect that state actually changed to error and that isAllowed was called 
+      expect(acl.isAllowed).toHaveBeenCalled();
+      expect($state.go).toHaveBeenCalled();
+      expect($state.current.name).toEqual("error");
     });
   });
 });
