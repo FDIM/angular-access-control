@@ -40,13 +40,23 @@ describe('acl', function () {
     acl = _acl_;
   }));
 
+  it("should not fail with empty identity", function () {
+    var identity = {
+      name: "user"
+    };
+    acl.init(identity);
+    expect(acl.identity).toBe(identity);
+    expect(acl.identity.resources).toBeDefined();
+    expect(acl.identity.resources.allowed).toBeDefined();
+    expect(acl.identity.resources.denied).toBeDefined();
+
+  });
   it("should fail with identity without resources", function () {
     expect(function () {
       acl.init({
         resources: {}
       });
     }).toThrow(new Error("resources must be an object with allowed and denied properties or unspecified at all"));
-
   });
   var allowed = function (r) {
     it("should have access to " + r, function () {
