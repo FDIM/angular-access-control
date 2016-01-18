@@ -18,7 +18,7 @@
         event.preventDefault();
         $timeout(function () {
           $state.go(toState, toParams);
-        }, 50);
+        }, 250);
         return;
       }
       if (!acl.isAllowed(toState.data.resource)) {
