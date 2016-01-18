@@ -28,7 +28,7 @@
         event.preventDefault();
         $timeout(function () {
           $state.go(toState, toParams);
-        }, 50);
+        }, 250);
         return;
       }
       if (!acl.isAllowed(toState.data.resource)) {
@@ -47,6 +47,7 @@
   }]);
   // The name of the module, followed by its dependencies (at the bottom to facilitate enclosure)
 }(angular.module("ngAcl.states", ['ngAcl', 'ui.router'])));
+
 "use strict";
 /**
  * Each module has a <moduleName>.module.js file.  This file contains the angular module declaration -

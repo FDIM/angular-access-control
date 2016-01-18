@@ -1,7 +1,7 @@
 {
   "name": "ng-acl",
   "main": "dist/ng-acl.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/FDIM/ng-acl.git",
   "authors": [
     "FDIM <domas.trijonis@gmail.com>"
