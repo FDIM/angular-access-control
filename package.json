@@ -1,5 +1,5 @@
 {
-  "name": "ngAcl",
+  "name": "ng-acl",
   "version": "0.0.1",
   "main": "dist/ng-acl.js",
   "scripts":
